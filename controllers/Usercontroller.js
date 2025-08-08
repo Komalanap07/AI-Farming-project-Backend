@@ -1,4 +1,13 @@
 const User = require('../models/User');
+// Get all users
+exports.getusers = async (req, res) => {
+  try {
+    const users = await User.find(); // fetch all users
+    res.status(200).json(users); // send them as JSON
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
 
 // Register a new user
 exports.registerUser = async (req, res) => {
